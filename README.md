@@ -30,6 +30,6 @@ Home Page
 
 ![Home Screenshot](./images/Screenshot%202025-11-03%20224138.png)
 
-Quiz Page
+<center> Quiz Page </center>
 ![Quiz Page Screenshot](./images/Screenshot%202025-11-03%20224208.png)
 
