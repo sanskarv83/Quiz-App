@@ -1,13 +1,198 @@
+/* === GLOBAL STYLING === */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #6dd5fa, #2980b9);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  overflow: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Add glowing animation for dynamic effect */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 183, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 183, 255, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 183, 255, 0.4);
+  }
+}
+
+/* === CARD CONTAINER STYLE (COMMON) === */
+.home-container,
+.quiz-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.home-card,
+.quiz-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 3rem 3.5rem;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.7s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-card:hover,
+.quiz-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 183, 255, 0.4);
+}
+
+/* === HOME PAGE === */
+.home-title {
+  font-size: 2.3rem;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(0, 162, 255, 0.7);
+  margin-bottom: 1rem;
+}
+
+.home-subtitle {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.home-input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.home-input,
+.home-select {
+  padding: 12px 15px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  width: 180px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.home-input:focus,
+.home-select:focus {
+  box-shadow: 0 0 10px rgba(0, 162, 255, 0.7);
+  transform: scale(1.05);
+}
+
+.home-btn {
+  background: linear-gradient(90deg, #007bff, #00d4ff);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 12px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+.home-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(90deg, #0056d2, #00b8f3);
+}
+
+/* === QUIZ PAGE === */
+.quiz-title {
+  font-size: 2rem;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(0, 162, 255, 0.7);
+  margin-bottom: 1rem;
+}
+
+.quiz-question {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+}
+
+.quiz-text {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quiz-option {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid transparent;
+  color: #fff;
+  border-radius: 15px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.03);
+}
+
+.quiz-option.selected {
+  background: rgba(0, 162, 255, 0.4);
+  border-color: #00b8f3;
+  font-weight: 600;
+}
+
+.quiz-btn {
+  margin-top: 2rem;
+  background: linear-gradient(90deg, #007bff, #00d4ff);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 12px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+.quiz-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(90deg, #0056d2, #00b8f3);
+}
+
+.quiz-btn:disabled {
+  background: #ccc;
+  color: #777;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
