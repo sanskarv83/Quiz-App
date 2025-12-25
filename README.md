@@ -27,6 +27,8 @@ It’s designed with a **clean, modern UI** using custom CSS and provides a smoo
 ## Screenshot 👇
 
 ![Home Screenshot](./images/Screenshot%202025-11-03%20224114.png)
+
 ![Home Screenshot](./images/Screenshot%202025-11-03%20224138.png)
+
 ![Quiz Page Screenshot](./images/Screenshot%202025-11-03%20224208.png)
 
