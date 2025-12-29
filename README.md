@@ -1,7 +1,8 @@
 # 🎯 Quiz App
 
 Welcome to the **Quiz App**, a fun and interactive web application built with **React.js**.  
-Users can enter their name, choose from multiple categories (like *Entertainment*, *Science & Technology*, *Sports & Games*, etc.), and test their knowledge through engaging quizzes.
+Users can enter their name, choose from multiple categories (like *Entertainment*, *Science & Technology*, *Sports & Games*, etc.), and test their knowledge through engaging quizzes. 
+https://my-quiz-challenge.netlify.app/
 
 ---
 
