@@ -4,7 +4,7 @@ const Quiz = ({ questions, onFinish, category }) => {
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState("");
   const [score, setScore] = useState(0);
-  const [showResult, setShowResult] = useState(false); // NEW
+  const [showResult, setShowResult] = useState(false);
 
   if (!questions || questions.length === 0) {
     return (
@@ -14,24 +14,25 @@ const Quiz = ({ questions, onFinish, category }) => {
     );
   }
 
-  const handleSelect = (opt) => {
-    if (showResult) return; // prevent re-click
-    setSelected(opt);
-    setShowResult(true);
-  };
-
   const handleNext = () => {
-    if (selected === questions[current].answer) {
-      setScore(score + 1);
+    // STEP 1: Show result first
+    if (!showResult) {
+      setShowResult(true);
+
+      if (selected === questions[current].answer) {
+        setScore(score + 1);
+      }
+      return;
     }
 
+    // STEP 2: Move to next question
     setSelected("");
-    setShowResult(false); // reset for next question
+    setShowResult(false);
 
     if (current + 1 < questions.length) {
       setCurrent(current + 1);
     } else {
-      onFinish(score + (selected === questions[current].answer ? 1 : 0));
+      onFinish(score);
     }
   };
 
@@ -65,12 +66,13 @@ const Quiz = ({ questions, onFinish, category }) => {
                   name="option"
                   value={opt}
                   checked={selected === opt}
-                  onChange={() => handleSelect(opt)}
+                  onChange={() => setSelected(opt)}
+                  disabled={showResult} // 🔒 disable after submit
                 />
 
                 {opt}
 
-                {/* ✅ Show icons */}
+                {/* ✅ Show only AFTER clicking button */}
                 {showResult && isCorrect && " ✅"}
                 {showResult && isSelected && !isCorrect && " ❌"}
               </label>
@@ -83,7 +85,13 @@ const Quiz = ({ questions, onFinish, category }) => {
           onClick={handleNext}
           disabled={!selected}
         >
-          {current === questions.length - 1 ? "Finish 🏁" : "Next ➜"}
+          {!showResult
+            ? current === questions.length - 1
+              ? "Submit"
+              : "Submit"
+            : current === questions.length - 1
+            ? "Finish 🏁"
+            : "Next ➜"}
         </button>
       </div>
     </div>
